@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="heading">
+
+    <h1>List over APIs</h1>
+  </div>
+    <div class="settings">
+      <div class="search">
+        <div class="form-group">
+          <label for="search-text">Sök</label>
+          <input type="text" class="form-control" id="search-text" [(ngModel)]="searchText" placeholder="Sök efter api" autofocus>
+        </div>
+      </div>
+      <div class="filter">
+        Filtrera på:
+
+        <div class="form-group">
+          <label for="CORS">Cors</label>
+          <input type="checkbox" name="CORS" id="CORS" class="form-control">
+          <label for="CORS">Auth</label>
+          <input type="checkbox" name="AUTH" id="AUTH" class="form-control">
+          <label for="CORS">HTTPS</label>
+          <input type="checkbox" name="HTTPS" id="HTTPS" class="form-control" (click)="filterList()" [(ngModel)]="filterHttps">
+        </div>
+      </div>
+    </div>
+      <table class="table_container">
+        <tr class="table-header">
+          <th *ngFor="let column of headers" (click)="sortResults(column)">
+           <h1>
+
+             {{column}}
+           </h1>
+          </th>
+        </tr>
+        <tr class="table_data" *ngFor="let api of result | filter: searchText | sortByPipe: sortingOrder" (click)="goToDetailsView(api)" >
+          <td>
+{{api.API}}
+          </td>
+          <td>
+{{api.Category}}
+          </td>
+          <td>
+{{api.Description}}
+          </td>
+        </tr>
+      </table>
+
+  </div>
+
+  <ng-container #container></ng-container>
+  <ng-template #modal>
+    <app-api-detailmodal class="hide_modal" id="detail_modal" [api]="this.selectedRow">
+      <button class="close_modal_button btn" (click)="closeModal()"> Close modal</button>
+    </app-api-detailmodal>
+
+  </ng-template>

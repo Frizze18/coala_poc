@@ -1,0 +1,33 @@
+<div class="modal">
+  <div class="modal_body">
+  <h2>{{api.API}}</h2>
+  <h3>{{api.Description}}</h3>
+    <div class="detail_list">
+      <div class="items">
+        <p class="label">Auth:</p>
+        <p class="value">{{api.Auth}}</p>
+        <p class="value" *ngIf="api.Auth === ''">No value</p>
+      </div>
+      <div class="items">
+        <p class="label">Cors:</p>
+        <p class="value" *ngIf="api.Cors === false">X</p>
+        <p class="value" *ngIf="api.Cors === true">yes</p>
+      </div>
+      <div class="items">
+        <p class="label">HTTPS:</p>
+        <p class="value" *ngIf="api.HTTPS === false">X</p>
+        <p class="value" *ngIf="api.HTTPS === true">yes</p>
+      </div>
+      <div class="items">
+        <p class="label">Category:</p>
+        <p class="value">{{api.Category}}</p>
+      </div>
+      <div class="items">
+        <p class="label">Link:</p>
+        <p class="value"> <a href="{{api.Link}}" target="_blank" rel="noopener noreferrer">{{api.Link}}</a></p>
+      </div>
+    </div>
+    <button class="close_modal_button btn">Close modal</button>
+  </div>
+</div>
+<div class="modal_background"></div>
